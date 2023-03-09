@@ -13,7 +13,6 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(initial_path, "index.html"));
 })
 
-let isAuth = false;
 
 app.get('/home', (req, res) => {
     res.sendFile(path.join(initial_path, "home.html"));
@@ -80,6 +79,10 @@ app.post("/login", (req, res) => {
 
 
 })
+
+
+//Authentication
+
 
 app.listen(4131, () => {
     console.log("Server is listening on port http://localhost:4131")
