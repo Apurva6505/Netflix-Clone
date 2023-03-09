@@ -83,16 +83,33 @@ app.post("/signup", (req, res) => {
 });
 
 app.post("/login", (req, res) => {
-    var name = req.body.name;
+    var name = req.body.username;
     var password = md5(req.body.password);
     
-    db.collection('users').findOne({"name":name},function(err,foundbro){
-        if(err){
-            console.log(err)
-        }else if(foundbro){
-            console.log("bro found")
+    db.collection('users').findOne(({"name":name}), (err, foundbro) => {
+        if (err) {
+            throw err;
+
+        } else {
+            
+            if(foundbro){
+                console.log("Found bro !!");
+                if(foundbro.password === password){
+                    console.log("Authenticated !")
+                    res.sendFile(path.join(initial_path, "home.html"));
+                }else{
+                    console.log("Not authenticated !")
+                    res.sendFile(path.join(initial_path, "noauth.html"));
+                }
+            }else{
+                console.log("bro not found")
+            }
+            
+            
         }
-    })
+
+    });
+
 
 })
 
