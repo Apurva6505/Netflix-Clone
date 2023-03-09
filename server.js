@@ -77,9 +77,6 @@ app.post("/signup", (req, res) => {
         }
 
     });
-
-
-
 });
 
 app.post("/login", (req, res) => {
@@ -101,11 +98,11 @@ app.post("/login", (req, res) => {
                     console.log("Not authenticated !")
                     res.sendFile(path.join(initial_path, "noauth.html"));
                 }
+                
             }else{
                 console.log("bro not found")
             }
-            
-            
+        
         }
 
     });
